@@ -1,0 +1,4 @@
+
+g++ getColorTable.cpp -o getTable `pkg-config --cflags --libs opencv`
+
+
