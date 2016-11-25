@@ -37,6 +37,7 @@ int main(void)
 	init_lcd();
 	delay_ms(500);
 	uint8_t dx,dy;
+	uint16_t i,j;
 	dx = 0;
         dy = 20;
         lcd_setAddrWindow(0,128,0,159);
@@ -69,24 +70,73 @@ int main(void)
 			dx++;
 		  }
 		  delay_ms(5000);
-		 lcd_setAddrWindow(0,128,0,159);
-	         uint16_t i,j;
-		 for(j=0;j<20480;j++){
-			push_color(imagen_tabla[j]);
-		 }
-		 delay_ms(5000);
-		 for(j=0;j<20480;j++){
-			push_color(imagen2_tabla[j]);
-		 }
-		delay_ms(5000);
-		 for(j=0;j<20480;j++){
-			push_color(imagen_tabla[j]);
-		 }
-		delay_ms(5000);
-		 for(j=0;j<20480;j++){
-			push_color(imagen2_tabla[j]);
-		 }
 
+                 lcd_setAddrWindow(0,128,0,160);
+		 for(j=0;j<20480;j++){
+			push_color(RGB565(getBlue(imagen_tabla[j]), getGreen(imagen_tabla[j]), getRed(imagen_tabla[j])));
+			delay_us(80);
+		 }
+		 for(j=0;j<20480;j++){
+			push_color(RGB565(getGreen(imagen_tabla[j]), getBlue(imagen_tabla[j]), getRed(imagen_tabla[j])));
+			delay_us(800);
+		 }
+		 for(j=0;j<20480;j++){
+			push_color(RGB565(getGreen(imagen_tabla[j]), getRed(imagen_tabla[j]), getBlue(imagen_tabla[j])));
+			delay_us(800);
+		 }
+		 for(j=0;j<20480;j++){
+			push_color(swapcolor(imagen_tabla[j]));
+			delay_us(800);
+		 }
+		 delay_ms(8000);
+        	lcd_setAddrWindow(0,128,0,160);
+		 delay_ms(10000);
+		st_PutStr5x7(2, 20, 50, "ST7735S", COLOR565_LIGHT_CYAN);
+		 delay_ms(10000);
+		st_PutStr5x7(2, 20, 70, "Library", COLOR565_LIGHT_CYAN);
+		st_PutStr5x7(2, 8, 100, "STM32F411", COLOR565_LIGHT_CYAN);
+		delay_ms(10000);
+
+        	lcd_setAddrWindow(64,128,0,160);
+		 delay_ms(10000);
+		for(j=0;j<160;j++){
+			for(i=64;i<128;i++){
+				lcd_Pixel(i, j, imagen2_tabla[i+(j*128)]);
+			        delay_us(1500);
+			}
+		}
+        	lcd_setAddrWindow(0,64,0,160);
+		for(j=0;j<160;j++){
+			for(i=0;i<64;i++){
+				lcd_Pixel(i, j, imagen2_tabla[i+(j*128)]);
+			        delay_us(1500);
+			}
+		}
+
+		lcd_setAddrWindow(64,128,0,160);
+		delay_ms(10000);
+		for(j=161;j>0;j--){
+			for(i=128;i>63;i--){
+				lcd_Pixel(i, j, imagen_tabla[i+(j*128-1)]);
+				delay_us(1000);
+			}
+		}
+		lcd_setAddrWindow(0,64,0,160);
+		for(j=0;j<160;j++){
+			for(i=0;i<64;i++){
+				lcd_Pixel(i, j, imagen_tabla[i+(j*128)]);
+				delay_us(1000);
+			}
+		}
+
+		delay_ms(9000);
+		lcd_orientacion(scr_CW);//x0y0 esquina inferior izquierda, util para imagenes horizontales
+		lcd_FillRect(0, 0, 160, 128, imagen_tabla[10000]);
+		lcd_setAddrWindow(0, 160,0, 128);
+		st_PutStr5x7(2, 5, 40, "MICRO-", COLOR565_SIENNA);
+		st_PutStr5x7(2, 30, 60, "CONTRO-", COLOR565_MOCCASIN);
+		st_PutStr5x7(2, 60, 80, "LADORES", COLOR565_ROYAL_BLUE);
+		lcd_orientacion(scr_normal);
 //################################# circulos2 #####################################
 		 delay_ms(5000);
 		 drawCircle(16, 32, 16, imagen_tabla[512]);
@@ -124,85 +174,8 @@ int main(void)
 		 delay_ms(1000);
 		 drawCircle(112, 128, 16, imagen2_tabla[112*128]);
 //################################# fin circulos ###############################
-                 lcd_setAddrWindow(0,128,0,159);
-		 for(j=0;j<20480;j++){
-			push_color(RGB565(getBlue(imagen_tabla[j]), getGreen(imagen_tabla[j]), getRed(imagen_tabla[j])));
-			delay_us(80);
-		 }
-		 for(j=0;j<20480;j++){
-			push_color(RGB565(getGreen(imagen_tabla[j]), getBlue(imagen_tabla[j]), getRed(imagen_tabla[j])));
-			delay_us(800);
-		 }
-		 for(j=0;j<20480;j++){
-			push_color(RGB565(getGreen(imagen_tabla[j]), getRed(imagen_tabla[j]), getBlue(imagen_tabla[j])));
-			delay_us(800);
-		 }
-		 for(j=0;j<20480;j++){
-			push_color(swapcolor(imagen_tabla[j]));
-			delay_us(800);
-		 }
-		 delay_ms(8000);
-        	lcd_setAddrWindow(0,128,0,159);
-		 delay_ms(10000);
-		st_PutStr5x7(2, 20, 50, "ST7735S", COLOR565_LIGHT_CYAN);
-		 delay_ms(10000);
-		st_PutStr5x7(2, 20, 70, "Library", COLOR565_LIGHT_CYAN);
-		st_PutStr5x7(2, 5, 100, "STM32F411", COLOR565_LIGHT_CYAN);
-		delay_ms(10000);
-
-        	lcd_setAddrWindow(64,128,0,160);
-		 delay_ms(10000);
-		for(j=0;j<160;j++){
-			for(i=64;i<128;i++){
-				lcd_Pixel(i, j, imagen2_tabla[i+(j*128)]);
-			        delay_us(1500);
-			}
-		}
-        	lcd_setAddrWindow(0,64,0,160);
-		for(j=0;j<160;j++){
-			for(i=0;i<64;i++){
-				lcd_Pixel(i, j, imagen2_tabla[i+(j*128)]);
-			        delay_us(1500);
-			}
-		}
-
-		delay_ms(5000);
-		lcd_orientacion(scr_CW);//x0y0 esquina inferior izquierda, util para imagenes horizontales
-		lcd_FillRect(0, 0, 160, 128, imagen_tabla[10000]);
-		lcd_setAddrWindow(0, 160,0, 128);
-		st_PutStr5x7(2, 5, 40, "MICRO-", COLOR565_SIENNA);
-		st_PutStr5x7(2, 30, 60, "CONTRO-", COLOR565_MOCCASIN);
-		st_PutStr5x7(2, 60, 80, "LADORES", COLOR565_ROYAL_BLUE);
-		lcd_orientacion(scr_normal);
-		 delay_ms(8000);
-        	lcd_setAddrWindow(0,128,0,160);
-		lcd_Clear(COLOR565_PALE_GOLDEN_ROD);
-		drawChar(54, 50, '1', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '1', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '2', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '2', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '3', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '3', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '4', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '4', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '5', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '5', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '6', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '6', COLOR565_PALE_GOLDEN_ROD,  5);
-		drawChar(54, 50, '7', COLOR565_SILVER, 5);
-		delay_us(50000);
-		drawChar(54, 50, '7', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '8', COLOR565_SILVER,  5);
-		delay_us(50000);
-		drawChar(54, 50, '8', COLOR565_PALE_GOLDEN_ROD, 5);
-		drawChar(54, 50, '9', COLOR565_SILVER, 5);
-		delay_ms(10000);				
+		 delay_ms(5000);
+				
 	}
 	return 0;
 }

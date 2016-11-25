@@ -21,7 +21,7 @@
 
 ## Cambiar esto segun sea el caso
 BINARY = main
-LDSCRIPT = /home/neithan/Microcontrolers/Lab3/codigo/common/stm32f4-discovery.ld
+LDSCRIPT = /home/neithan/ST7735S-Library/codigo/common/stm32f4-discovery.ld
 
 ## De aca para abajo nada cambia
 SOURCES = $(filter-out $(BINARY).c, $(wildcard *.c))
@@ -34,5 +34,5 @@ FP_FLAGS	?= -mfloat-abi=hard -mfpu=fpv4-sp-d16
 ARCH_FLAGS	= -mthumb -mcpu=cortex-m4 $(FP_FLAGS)
 
 
-include ../common/Makefile.rules
+include /home/neithan/ST7735S-Library/codigo/common/Makefile.rules
 
