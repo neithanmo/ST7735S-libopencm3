@@ -117,7 +117,7 @@ int main(void)
 		delay_ms(10000);
 		for(j=161;j>0;j--){
 			for(i=128;i>63;i--){
-				lcd_Pixel(i, j, imagen_tabla[i+(j*128-1)]);
+				lcd_Pixel(i, j-1, imagen_tabla[i+(j*128-1)]);
 				delay_us(1000);
 			}
 		}
