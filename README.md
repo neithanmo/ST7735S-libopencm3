@@ -9,27 +9,30 @@ Give examples
 ```
 
 ## Installing
-```
-add the libopencm3 repository(in this case we use ubuntu)
-```
 
+add the libopencm3 repository(in this case we use ubuntu)
+
+```
 sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
 sudo apt-get update & upgrade
-
 ```
+
 tools for compiling
+
 ```
 sudo apt-get install make git gcc-arm-embedded binutils-arm-embedded  \
 gdb-arm-embedded build-essential cmake pkg-config pkg-config  \
 libusb-1.0 libusb-1.0.0-dev
 ```
-get the libopencm3 library and compile it:
+get the libopencm3 library and compile it
+
 ```
 git clone git://github.com/libopencm3/libopencm3.git
 cd libopencm3
 make
-
 ```
+
+
 The program used to load the binary file to the micro-controller of
 Discovery cards are the stlink. First you download the repository code,
 Then proceed to compile it and install it with cmake and make. Of the same co-
@@ -38,8 +41,9 @@ Udev is a device driver for the linux kernel, these rules are
 Set the read and write permissions for the device
 Detected as the hardware programmer, in case this step fails,
 Only the root user can run the programmer's programs.
-```
 
+
+```
 git clone https://github.com/texane/stlink.git
 cd stlink
 mkdir build
@@ -49,6 +53,7 @@ ma
 sudo make install
 sudo cp etc/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
 sudo /etc/init.d/udev restart
+```
 
 ## Running the tests
 
