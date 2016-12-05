@@ -9,15 +9,10 @@ Give examples
 
 ### Installing
 ```
-First install the prerequisites:
 add the libopencm3 repository(in this case we use ubuntu)
 ```
 
 sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
-
-```
-then:
-```
 sudo apt-get update & upgrade
 
 ```
@@ -31,26 +26,22 @@ get the libopencm3 library and compile it:
 ```
 git clone git://github.com/libopencm3/libopencm3.git
 cd libopencm3
-```
-and :
-```
+
 make
 
 ```
-the we need to instal stlink for flashing with:
+The program used to load the binary file to the micro-controller of
+Discovery cards are the stlink. First you download the repository code,
+Then proceed to compile it and install it with cmake and make. Of the same co-
+Of the stlink repository, udev rules are copied to the operating system,
+Udev is a device driver for the linux kernel, these rules are
+Set the read and write permissions for the device
+Detected as the hardware programmer, in case this step fails,
+Only the root user can run the programmer's programs.
 ```
 
 git clone https://github.com/texane/stlink.git
-
-```
-go to path
-```
-
 cd stlink
-
-```
-compile:
-```
 mkdir build
 cd build
 cmake ..
@@ -60,48 +51,47 @@ sudo cp etc/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
 sudo /etc/init.d/udev restart
 
 ## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+clone this library
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+https://github.com/neithanmo/ST7735S-libopencm3.git
+cd ST7735S-libopencm3/codigo/src
+```
+open the MakeFile and change the line number 24, with the correct path into your system directory for the linker
+```
+LDSCRIPT = "path to your"/ST7735S-Library/codigo/common/stm32f4-discovery.ld
 
 ```
-Give an example
+where, "path to your" maybe /home/pedro//ST7735S-Library/codigo/common/stm32f4-discovery.ld
+or /home/william.. etc.
+you need to change the line number 37 of the MakeFile too, in the same way(relative path to the library).
+then
+```
+cd "path to your"/ST7735S-Library/codigo/src
+make
+./flash.sh
+
+```
+there is another program, if you want to use other images, this program is "MakeColorTable", it is a utility for get the pixel array of any image in any format, is based in opencv. for compile this utlity first sure that you have the opencv development files, then compile with:
 ```
 
-## Deployment
+g++ MakeColorTable.cpp -o getTable `pkg-config --cflags --libs opencv`
 
-Add additional notes about how to deploy this on a live system
+```
+run the utility with the path to a new image how argument, it will created a new file named color_table.h, so you need to change this name to "table.h" or "tabla2.h", is necesary to rename the array name of the new file, by default the array name is "image_tabla[]", see the main.c code.. run the utility with
+```
 
-## Built With
+./getTable imagen2.jpeg
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+Boris Altamirano
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Natanael Mojica** - *Initial work* - [neithanmo](https://github.com/neithanmo)
 
 ## License
 
@@ -110,6 +100,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used
-* Inspiration
+* Easy use of ST7735S when using libopencm3
 * etc
 
