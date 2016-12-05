@@ -52,38 +52,48 @@ sudo /etc/init.d/udev restart
 
 ## Running the tests
 
-```
-clone this ST7735S-libopencm3 library
-```
 
+clone this ST7735S-libopencm3 library
+
+```
 https://github.com/neithanmo/ST7735S-libopencm3.git
 cd ST7735S-libopencm3/codigo/src
 ```
+
+
 open the MakeFile and change the line number 24, with the correct path into your system directory for the linker
-```
-LDSCRIPT = "path to your"/ST7735S-Library/codigo/common/stm32f4-discovery.ld
 
 ```
+LDSCRIPT = "path to your"/ST7735S-Library/codigo/common/stm32f4-discovery.ld
+```
+
+
 where, "path to your" maybe /home/pedro//ST7735S-Library/codigo/common/stm32f4-discovery.ld
 or /home/william.. etc.
 you need to change the line number 37 of the MakeFile too, in the same way(relative path to the library).
 then
+
+
 ```
 cd "path to your"/ST7735S-Library/codigo/src
 make
 ./flash.sh
-
 ```
+
+
 there is another program, if you want to use other images, this program is "MakeColorTable", it is a utility for get the pixel array of any image in any format, is based in opencv. for compile this utlity first sure that you have the opencv development files, then compile with:
-```
 
+```
 g++ MakeColorTable.cpp -o getTable `pkg-config --cflags --libs opencv`
-
 ```
+
+
 run the utility with the path to a new image how argument, it will created a new file named color_table.h, so you need to change this name to "table.h" or "tabla2.h", is necesary to rename the array name of the new file, by default the array name is "image_tabla[]", see the main.c code.. run the utility with
-```
 
+
+```
 ./getTable imagen2.jpeg
+```
 
 
 ## Contributing
