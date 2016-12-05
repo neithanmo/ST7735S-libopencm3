@@ -6,6 +6,7 @@ The first thing is to update the operating system's package base, then
 The prerequisites are installed to compile the libopencm3 library, the stlink programmer and the library  with a demo
 Give examples
 ```
+```
 
 ## Installing
 ```
@@ -48,8 +49,9 @@ ma
 sudo make install
 sudo cp etc/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
 sudo /etc/init.d/udev restart
-
+```
 ## Running the tests
+```
 ```
 clone this ST7735S-libopencm3 library
 ```
@@ -83,20 +85,24 @@ run the utility with the path to a new image how argument, it will created a new
 
 ./getTable imagen2.jpeg
 
-
-# Contributing
-
+```
+## Contributing
+```
+```
 Boris Altamirano
+```
 
-# Authors
+```
+## Authors
+```
 
 * **Natanael Mojica** - *Initial work* - [neithanmo](https://github.com/neithanmo)
 
-# License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-# Acknowledgments
+## Acknowledgments
 
 * Hat tip to anyone who's code was used
 * Easy use of ST7735S when using libopencm3
