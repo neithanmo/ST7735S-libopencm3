@@ -121,5 +121,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Hat tip to anyone who's code was used
 * Easy use of ST7735S when using libopencm3
-* etc
+
 
