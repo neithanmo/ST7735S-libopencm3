@@ -7,7 +7,7 @@ The prerequisites are installed to compile the libopencm3 library, the stlink pr
 Give examples
 ```
 
-### Installing
+## Installing
 ```
 add the libopencm3 repository(in this case we use ubuntu)
 ```
@@ -26,7 +26,6 @@ get the libopencm3 library and compile it:
 ```
 git clone git://github.com/libopencm3/libopencm3.git
 cd libopencm3
-
 make
 
 ```
@@ -52,7 +51,7 @@ sudo /etc/init.d/udev restart
 
 ## Running the tests
 ```
-clone this library
+clone this ST7735S-libopencm3 library
 ```
 
 https://github.com/neithanmo/ST7735S-libopencm3.git
@@ -85,19 +84,19 @@ run the utility with the path to a new image how argument, it will created a new
 ./getTable imagen2.jpeg
 
 
-## Contributing
+# Contributing
 
 Boris Altamirano
 
-## Authors
+# Authors
 
 * **Natanael Mojica** - *Initial work* - [neithanmo](https://github.com/neithanmo)
 
-## License
+# License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
+# Acknowledgments
 
 * Hat tip to anyone who's code was used
 * Easy use of ST7735S when using libopencm3
