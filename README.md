@@ -49,9 +49,9 @@ ma
 sudo make install
 sudo cp etc/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
 sudo /etc/init.d/udev restart
-```
+
 ## Running the tests
-```
+
 ```
 clone this ST7735S-libopencm3 library
 ```
@@ -85,18 +85,18 @@ run the utility with the path to a new image how argument, it will created a new
 
 ./getTable imagen2.jpeg
 
-```
+
 ## Contributing
-```
+
 ```
 Boris Altamirano
 ```
 
-```
-## Authors
-```
 
-* **Natanael Mojica** - *Initial work* - [neithanmo](https://github.com/neithanmo)
+## Authors
+
+
+* **Natanael Mojica** - *whole work* - [neithanmo](https://github.com/neithanmo)
 
 ## License
 
