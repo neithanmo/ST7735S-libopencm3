@@ -8,16 +8,18 @@ Give examples
 ```
 
 ### Installing
-
+```
 First install the prerequisites:
 add the libopencm3 repository(in this case we use ubuntu)
 ```
+
 sudo add-apt-repository ppa:team-gcc-arm-embedded/ppa
-```
-then:
 
 ```
+then:
+```
 sudo apt-get update & upgrade
+
 ```
 tools for compiling
 ```
@@ -28,21 +30,24 @@ libusb-1.0 libusb-1.0.0-dev
 get the libopencm3 library and compile it:
 ```
 git clone git://github.com/libopencm3/libopencm3.git
-```
-```
 cd libopencm3
 ```
 and :
 ```
 make
+
 ```
 the we need to instal stlink for flashing with:
 ```
+
 git clone https://github.com/texane/stlink.git
+
 ```
 go to path
 ```
+
 cd stlink
+
 ```
 compile:
 ```
@@ -53,7 +58,7 @@ ma
 sudo make install
 sudo cp etc/udev/rules.d/49-stlinkv* /etc/udev/rules.d/
 sudo /etc/init.d/udev restart
-```
+
 ## Running the tests
 
 Explain how to run the automated tests for this system
