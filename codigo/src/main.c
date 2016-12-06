@@ -24,7 +24,7 @@ static void gpio_setup(void)
 {
 	rcc_periph_clock_enable(RCC_GPIOD);
         gpio_mode_setup(LED_DISCO_GREEN_PORT, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE,
-		LED_DISCO_GREEN_PIN | GPIO15 | GPIO12 | GPIO13 | GPIO14 | GPIO3 | GPIO4 | GPIO5 | GPIO1);
+		LED_DISCO_GREEN_PIN | GPIO15 | GPIO12 | GPIO13);
 }
 
 
@@ -102,14 +102,14 @@ int main(void)
 		for(j=0;j<160;j++){
 			for(i=64;i<128;i++){
 				lcd_Pixel(i, j, imagen2_tabla[i+(j*128)]);
-			        delay_us(1500);
+			        delay_us(1000);
 			}
 		}
         	lcd_setAddrWindow(0,64,0,160);
 		for(j=0;j<160;j++){
 			for(i=0;i<64;i++){
 				lcd_Pixel(i, j, imagen2_tabla[i+(j*128)]);
-			        delay_us(1500);
+			        delay_us(1000);
 			}
 		}
 
@@ -117,7 +117,7 @@ int main(void)
 		delay_ms(10000);
 		for(j=161;j>0;j--){
 			for(i=128;i>63;i--){
-				lcd_Pixel(i, j-1, imagen_tabla[i+(j*128-1)]);
+				lcd_Pixel(i, j, imagen_tabla[i+(j*128+1)]);
 				delay_us(1000);
 			}
 		}

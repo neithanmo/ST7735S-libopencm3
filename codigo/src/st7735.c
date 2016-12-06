@@ -191,6 +191,9 @@ void spi_setup(uint32_t SPI)
         default:
 		break;
 	}
+		rcc_periph_clock_enable(RCC_GPIOD);
+        	gpio_mode_setup(LCD_CONTROL_PORT, GPIO_MODE_OUTPUT, 
+			GPIO_PUPD_NONE, BLK_PIN | DC_PIN | CS_PIN | RST_PIN);
 		spi_reset(SPI);
 		spi_set_master_mode(SPI);
 		spi_enable_software_slave_management(SPI);
@@ -200,6 +203,7 @@ void spi_setup(uint32_t SPI)
 			SPI_CR1_CPHA_CLK_TRANSITION_1, SPI_CR1_DFF_8BIT, SPI_CR1_MSBFIRST);
 		/* Enable SPI1 periph. */
 		spi_enable(SPI);
+
 }
 
 

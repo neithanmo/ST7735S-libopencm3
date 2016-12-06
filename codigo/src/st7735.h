@@ -12,7 +12,6 @@ Esta es una libreria para utilizar la pantalla TFT ST7735S utilizando la tarjeta
     */
 
 #include <stdlib.h>
-#include <assert.h>
 #include <string.h>
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
@@ -21,7 +20,6 @@ Esta es una libreria para utilizar la pantalla TFT ST7735S utilizando la tarjeta
 #include <libopencmsis/core_cm3.h>
 #include <libopencm3/stm32/spi.h>
 #include <libopencm3/cm3/nvic.h>
-#include <libopencm3/cm3/systick.h>
 #include "color.h"
 #include "font5x7.h"
 
